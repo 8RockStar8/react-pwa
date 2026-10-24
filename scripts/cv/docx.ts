@@ -140,6 +140,7 @@ export async function writeDocx(cv: CV, outFile: string) {
     children.push(
       new Paragraph({
         spacing: { before: 80 },
+        keepNext: Boolean(e.degree),
         tabStops: [{ type: TabStopType.RIGHT, position: RIGHT_EDGE }],
         children: [
           new TextRun({ text: e.school, bold: true, size: 21, font: FONT }),
@@ -156,6 +157,7 @@ export async function writeDocx(cv: CV, outFile: string) {
       children.push(
         new Paragraph({
           spacing: { before: 80 },
+          keepNext: true,
           children: [
             t.url ? link(t.title, t.url) : new TextRun({ text: t.title, bold: true, size: 21, font: FONT }),
           ],
@@ -171,6 +173,7 @@ export async function writeDocx(cv: CV, outFile: string) {
       children.push(
         new Paragraph({
           spacing: { before: 80 },
+          keepNext: true,
           children: [
             new TextRun({ text: p.name, bold: true, size: 21, font: FONT }),
             ...(p.status ? [new TextRun({ text: `  (${p.status.toLowerCase()})`, size: 19, color: AMBER, font: FONT })] : []),
