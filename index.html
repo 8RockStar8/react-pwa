@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Gagik Aproyan</title>
+    <meta name="description" content="Gagik Aproyan — senior React and React Native engineer in Yerevan, Armenia." />
+    <meta name="theme-color" content="#f2f5f7" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Gagik CV" />
+    <meta property="og:title" content="Gagik Aproyan" />
+    <meta property="og:description" content="Senior React and React Native engineer." />
+    <meta property="og:image" content="/photo.jpg" />
+    <script>
+      // Paint the right background before React loads, so dark-mode users don't see a white flash.
+      (function () {
+        try {
+          var saved = JSON.parse(localStorage.getItem('theme-mode'));
+          var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.style.background = dark ? '#0e141c' : '#f2f5f7';
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>Gagik Aproyan, senior React and React Native engineer. Email: gagik.aproyan.dev@gmail.com</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
