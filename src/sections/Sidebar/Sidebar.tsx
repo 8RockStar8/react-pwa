@@ -14,6 +14,7 @@ import {
   useTheme,
 } from '@mui/material';
 
+import DownloadCv from '@/components/DownloadCv';
 import { sidebarWidth } from '@/config';
 import routes from '@/routes';
 
@@ -56,7 +57,8 @@ function NavItems({ onNavigate }: { onNavigate?: () => void }) {
 
 function SidebarFooter() {
   return (
-    <Box sx={{ mt: 'auto', p: 2.5 }}>
+    <Box sx={{ mt: 'auto', p: 2.5, display: 'grid', gap: 1.5 }}>
+      <DownloadCv fullWidth />
       <Typography variant="caption" color="text.secondary" component="p">
         Works offline. Install it to keep this CV on your home screen.
       </Typography>

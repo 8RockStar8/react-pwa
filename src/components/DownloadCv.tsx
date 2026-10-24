@@ -13,9 +13,11 @@ const base = `${import.meta.env.BASE_URL}${cvFileBase(cv.name)}`;
 interface DownloadCvProps {
   /** 'button' = labeled pill, 'icon' = compact icon for the header */
   variant?: 'button' | 'icon';
+  /** Stretch the labeled button to its container's width (sidebar). */
+  fullWidth?: boolean;
 }
 
-function DownloadCv({ variant = 'button' }: DownloadCvProps) {
+function DownloadCv({ variant = 'button', fullWidth = false }: DownloadCvProps) {
   const [anchor, setAnchor] = useState<HTMLElement | null>(null);
   const open = (event: MouseEvent<HTMLElement>) => setAnchor(event.currentTarget);
   const close = () => setAnchor(null);
@@ -34,6 +36,8 @@ function DownloadCv({ variant = 'button' }: DownloadCvProps) {
         startIcon={<DownloadIcon />}
         aria-haspopup="menu"
         onClick={open}
+        fullWidth={fullWidth}
+        size={fullWidth ? 'large' : 'medium'}
         sx={{ borderRadius: 99, px: 2 }}
       >
         Download CV
