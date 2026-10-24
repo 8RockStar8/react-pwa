@@ -17,7 +17,7 @@ export default defineConfig({
       // switch to true to test the service worker with `npm run dev`
       devOptions: { enabled: false },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,jpg,woff2}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,jpg,woff2,pdf,docx}'],
         navigateFallback: 'index.html',
       },
       manifest: {

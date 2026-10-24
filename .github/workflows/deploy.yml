@@ -31,6 +31,13 @@ jobs:
       - run: npm run build
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
+      # Keep the generated CV files as a downloadable build artifact too.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cv-files
+          path: |
+            public/*_CV.pdf
+            public/*_CV.docx
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

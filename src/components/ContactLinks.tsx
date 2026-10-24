@@ -6,6 +6,7 @@ import MailIcon from '@mui/icons-material/MailOutline';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { Box, Button, Snackbar } from '@mui/material';
 
+import DownloadCv from '@/components/DownloadCv';
 import cv from '@/data/cv';
 
 const pill = {
@@ -47,6 +48,9 @@ function ContactLinks() {
   return (
     <>
     <Box component="ul" sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, p: 0, m: 0, listStyle: 'none' }}>
+      <li>
+        <DownloadCv />
+      </li>
       {github && (
         <li>
           <Button variant="outlined" sx={pill} startIcon={<GitHubIcon />} href={github} target="_blank" rel="noopener">

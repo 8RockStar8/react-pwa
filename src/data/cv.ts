@@ -29,6 +29,7 @@ const cv: CV = {
     github: 'https://github.com/8RockStar8',
     youtube: 'https://www.youtube.com/watch?v=0qXWbMQiA24&list=PL8TDbi_Q7TikcEjizJu5QQKPdoJ9U7wGm',
     // linkedin: 'https://www.linkedin.com/in/your-profile',
+    website: 'https://8rockstar8.github.io/react-pwa/',
   },
 
   // Newest first. Add 1–2 `highlights` per job: what you built and the result.

@@ -5,7 +5,10 @@
   "type": "module",
   "description": "Gagik Aproyan — personal CV as a progressive web app",
   "scripts": {
+    "cv": "tsx scripts/generate-cv.ts",
+    "predev": "npm run cv",
     "dev": "vite",
+    "prebuild": "npm run cv",
     "build": "tsc -b && vite build && cp dist/index.html dist/404.html",
     "preview": "vite preview",
     "ts:check": "tsc -b --noEmit"
@@ -24,10 +27,14 @@
     "react-router": "^7.2.0"
   },
   "devDependencies": {
+    "@fontsource/archivo": "^5.1.1",
+    "@react-pdf/renderer": "^4.1.6",
     "@types/node": "^22.13.8",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
+    "docx": "^9.1.1",
+    "tsx": "^4.19.2",
     "typescript": "~5.7.2",
     "vite": "^6.2.0",
     "vite-plugin-pwa": "^0.21.1"

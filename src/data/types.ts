@@ -46,6 +46,8 @@ export interface Contacts {
   github?: string;
   youtube?: string;
   linkedin?: string;
+  /** The public URL of this CV site; printed on the PDF / Word CV. */
+  website?: string;
 }
 
 export interface CV {

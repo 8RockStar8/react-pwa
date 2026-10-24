@@ -7,6 +7,7 @@ import LightIcon from '@mui/icons-material/LightModeOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Button, IconButton, Stack, Toolbar, Tooltip, Typography } from '@mui/material';
 
+import DownloadCv from '@/components/DownloadCv';
 import { repository, title } from '@/config';
 import { usePwaInstall } from '@/hooks/usePwaInstall';
 import { useSidebar } from '@/sections/Sidebar/hooks';
@@ -72,6 +73,7 @@ function Header() {
               Install
             </Button>
           )}
+          <DownloadCv variant="icon" />
           {repository && (
             <Tooltip title="GitHub" arrow>
               <IconButton component="a" href={repository} target="_blank" rel="noopener" aria-label="GitHub profile">

@@ -2,6 +2,7 @@ import CopyIcon from '@mui/icons-material/ContentCopy';
 import { Box, IconButton, Link, Tooltip, Typography } from '@mui/material';
 
 import { useCopy } from '@/components/ContactLinks';
+import DownloadCv from '@/components/DownloadCv';
 import Page from '@/components/Page';
 import cv from '@/data/cv';
 import { displayFont } from '@/theme/themes';
@@ -75,6 +76,9 @@ function Contact() {
           </Box>
         ))}
       </Box>
+      <div>
+        <DownloadCv />
+      </div>
       {snackbar}
     </Page>
   );

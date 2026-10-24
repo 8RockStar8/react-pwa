@@ -26,19 +26,31 @@ to update the CV.
 - Add `linkedin` under `contacts` and the LinkedIn button appears everywhere.
 - The photo is `public/photo.jpg` (square, 640 × 640).
 
+## Downloadable CV (PDF and Word)
+
+The **Download CV** button offers `Gagik_Aproyan_CV.pdf` (designed, one page) and
+`Gagik_Aproyan_CV.docx` (editable, simple layout that recruiters' systems can read).
+Both are generated from `src/data/cv.ts` by `scripts/generate-cv.ts`, which runs
+automatically before `npm run dev` and `npm run build`. Run `npm run cv` to regenerate them
+on their own. The generated files are not committed (see `.gitignore`).
+
+- PDF: `scripts/cv/pdf.tsx` (@react-pdf/renderer)
+- Word: `scripts/cv/docx.ts` (docx)
+
 ## Project structure
 
 ```
 src/
-  data/          cv.ts (content) and types.ts
+  data/          cv.ts (content), types.ts, cvFiles.ts (download file names)
   pages/         Home, Experience, Skills, Projects, Contact, NotFound (lazy-loaded)
   routes/        route list (also drives the sidebar) and <Pages/>
   sections/      Header and Sidebar
-  components/    CareerRibbon, StackLayers, ContactLinks, Page, Loading
+  components/    CareerRibbon, StackLayers, ContactLinks, DownloadCv, Page, Loading
   theme/         light/dark palettes, fonts, theme toggle (remembers the choice)
   hooks/         usePwaInstall (the Install button)
   utils/         dates.ts (pure date helpers), loader.tsx (no-flash lazy loading)
   error-handling/
+scripts/         generate-cv.ts + cv/pdf.tsx, cv/docx.ts
 ```
 
 ## Deploy
