@@ -2,6 +2,7 @@ import { Box, Typography } from '@mui/material';
 
 import Page, { SectionTitle } from '@/components/Page';
 import cv from '@/data/cv';
+import { displayFont } from '@/theme/themes';
 import { durationInMonths, formatDuration, formatRange } from '@/utils/dates';
 
 function Experience() {
@@ -24,7 +25,7 @@ function Experience() {
                 borderColor: 'divider',
               }}
             >
-              <Box sx={{ fontVariantNumeric: 'tabular-nums', color: 'text.secondary', fontSize: '0.92rem', pt: { sm: 0.4 } }}>
+              <Box sx={{ fontFamily: displayFont, fontVariantNumeric: 'tabular-nums', color: 'text.secondary', fontSize: '0.92rem', pt: { sm: 0.4 } }}>
                 <div>{formatRange(job.start, job.end)}</div>
                 <div>{formatDuration(durationInMonths(job.start, job.end))}</div>
               </Box>
@@ -81,7 +82,7 @@ function Experience() {
                 columnGap: 3,
               }}
             >
-              <Typography color="text.secondary" sx={{ fontVariantNumeric: 'tabular-nums', fontSize: '0.92rem', pt: { sm: 0.4 } }}>
+              <Typography color="text.secondary" sx={{ fontFamily: displayFont, fontVariantNumeric: 'tabular-nums', fontSize: '0.92rem', pt: { sm: 0.4 } }}>
                 {item.period}
               </Typography>
               <Box>

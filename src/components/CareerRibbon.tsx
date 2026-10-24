@@ -121,6 +121,7 @@ function CareerRibbon({ jobs }: { jobs: Job[] }) {
                 borderLeft: 1,
                 borderColor: 'divider',
                 fontSize: '0.78rem',
+                fontFamily: displayFont,
                 color: 'text.secondary',
                 fontVariantNumeric: 'tabular-nums',
                 lineHeight: '22px',
@@ -140,7 +141,7 @@ function CareerRibbon({ jobs }: { jobs: Job[] }) {
           {job.company}
         </Typography>
         <Typography>{job.role}</Typography>
-        <Typography color="text.secondary" sx={{ fontVariantNumeric: 'tabular-nums', fontSize: '0.92rem' }}>
+        <Typography color="text.secondary" sx={{ fontFamily: displayFont, fontVariantNumeric: 'tabular-nums', fontSize: '0.92rem' }}>
           {formatRange(job.start, job.end)}, {formatDuration(durationInMonths(job.start, job.end))}
         </Typography>
       </Box>

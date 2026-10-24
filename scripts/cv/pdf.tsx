@@ -22,16 +22,10 @@ const font = (pkg: string, file: string) => path.join(root, 'node_modules', '@fo
 Font.register({
   family: 'Archivo',
   fonts: [
+    { src: font('archivo', 'archivo-latin-400-normal.woff'), fontWeight: 400 },
+    { src: font('archivo', 'archivo-latin-600-normal.woff'), fontWeight: 600 },
     { src: font('archivo', 'archivo-latin-700-normal.woff'), fontWeight: 700 },
     { src: font('archivo', 'archivo-latin-800-normal.woff'), fontWeight: 800 },
-  ],
-});
-Font.register({
-  family: 'Atkinson',
-  fonts: [
-    { src: font('atkinson-hyperlegible', 'atkinson-hyperlegible-latin-400-normal.woff'), fontWeight: 400 },
-    { src: font('atkinson-hyperlegible', 'atkinson-hyperlegible-latin-700-normal.woff'), fontWeight: 700 },
-    { src: font('atkinson-hyperlegible', 'atkinson-hyperlegible-latin-400-italic.woff'), fontWeight: 400, fontStyle: 'italic' },
   ],
 });
 // Don't break words with hyphens.
@@ -49,9 +43,9 @@ const c = {
 };
 
 const s = StyleSheet.create({
-  page: { flexDirection: 'row', fontFamily: 'Atkinson', fontSize: 9, color: c.ink, lineHeight: 1.4 },
+  page: { flexDirection: 'row', fontFamily: 'Archivo', fontSize: 9, color: c.ink, lineHeight: 1.4 },
   side: { width: 178, backgroundColor: c.side, paddingTop: 34, paddingBottom: 48, paddingHorizontal: 20, gap: 18 },
-  main: { flex: 1, paddingTop: 34, paddingBottom: 48, paddingLeft: 28, paddingRight: 32, gap: 16 },
+  main: { flex: 1, paddingTop: 34, paddingBottom: 44, paddingLeft: 28, paddingRight: 32, gap: 13 },
   photo: { width: 92, height: 92, borderRadius: 8, objectFit: 'cover' },
   sideTitle: { fontFamily: 'Archivo', fontWeight: 700, fontSize: 9.5, color: c.teal, marginBottom: 5 },
   sideText: { fontSize: 8.5 },
@@ -60,9 +54,9 @@ const s = StyleSheet.create({
   name: { fontFamily: 'Archivo', fontWeight: 800, fontSize: 30, lineHeight: 1.05, letterSpacing: -0.3 },
   title: { fontFamily: 'Archivo', fontWeight: 700, fontSize: 12, color: c.teal, marginTop: 4 },
   summary: { fontSize: 9.5, lineHeight: 1.5, marginTop: 8 },
-  h2: { fontFamily: 'Archivo', fontWeight: 700, fontSize: 11.5, marginBottom: 8 },
+  h2: { fontFamily: 'Archivo', fontWeight: 700, fontSize: 11.5, marginBottom: 6 },
   muted: { color: c.muted },
-  row: { flexDirection: 'row', paddingVertical: 5, borderTopWidth: 0.6, borderTopColor: c.line },
+  row: { flexDirection: 'row', paddingVertical: 4.5, borderTopWidth: 0.6, borderTopColor: c.line },
   dateCol: { width: 92, fontSize: 8, color: c.muted, paddingTop: 1 },
   company: { fontFamily: 'Archivo', fontWeight: 700, fontSize: 10 },
   footer: {
@@ -204,7 +198,7 @@ function CvDocument({ cv, photoPath }: { cv: CV; photoPath: string | null }) {
           <View>
             <Text style={s.h2}>
               Experience{' '}
-              <Text style={{ fontFamily: 'Atkinson', fontWeight: 400, fontSize: 8.5, color: c.muted }}>
+              <Text style={{ fontWeight: 400, fontSize: 8.5, color: c.muted }}>
                 {formatDuration(currentMonthIndex() - toMonthIndex(firstStart) + 1)} in total
               </Text>
             </Text>
@@ -213,15 +207,18 @@ function CvDocument({ cv, photoPath }: { cv: CV; photoPath: string | null }) {
               <View key={job.company + job.start} style={[s.row, i === 0 ? { borderTopWidth: 0 } : {}]} wrap={false}>
                 <View style={s.dateCol}>
                   <Text>{formatRange(job.start, job.end)}</Text>
-                  <Text>{formatDuration(durationInMonths(job.start, job.end))}</Text>
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={s.company}>
-                    {job.company}
-                    {job.end === null && <Text style={{ fontSize: 7.5, color: c.amber }}>{'  '}Current</Text>}
+                  <Text>
+                    <Text style={s.company}>{job.company}</Text>
+                    <Text>{'   '}{job.role}</Text>
                   </Text>
-                  <Text>{job.role}</Text>
-                  <Text style={[s.muted, { fontSize: 8 }]}>{job.stack.join(', ')}</Text>
+                  <Text style={[s.muted, { fontSize: 8 }]}>
+                    {job.stack.join(', ')}
+                    {'   '}
+                    {formatDuration(durationInMonths(job.start, job.end))}
+                    {job.end === null ? <Text style={{ color: c.amber }}>{'   '}Current</Text> : null}
+                  </Text>
                   {job.highlights.map((h) => (
                     <View key={h} style={{ flexDirection: 'row', marginTop: 1.5 }}>
                       <Text style={{ width: 8 }}>•</Text>
@@ -252,11 +249,11 @@ function CvDocument({ cv, photoPath }: { cv: CV; photoPath: string | null }) {
           )}
 
           {cv.projects.length > 0 && (
-            <View wrap={false}>
+            <View>
               <Text style={s.h2}>Projects</Text>
               <View style={{ gap: 5 }}>
                 {cv.projects.map((p) => (
-                  <View key={p.name}>
+                  <View key={p.name} wrap={false}>
                     <Text>
                       <Text style={{ fontWeight: 700 }}>{p.name}</Text>
                       {p.status ? <Text style={{ color: c.amber, fontSize: 7.5 }}>{'  '}{p.status}</Text> : null}
