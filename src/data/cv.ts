@@ -27,7 +27,7 @@ const cv: CV = {
     email: 'gagik.aproyan.dev@gmail.com',
     // phone: '+374 ...',  // hidden: the site is public
     github: 'https://github.com/8RockStar8',
-    youtube: 'https://www.youtube.com/channel/UC4C-YzK75MlxoFUBiurTZMQ',
+    youtube: 'https://www.youtube.com/watch?v=0qXWbMQiA24&list=PL8TDbi_Q7TikcEjizJu5QQKPdoJ9U7wGm',
     // linkedin: 'https://www.linkedin.com/in/your-profile',
   },
 
@@ -152,7 +152,7 @@ const cv: CV = {
     {
       title: 'JavaScript lessons on YouTube',
       description: 'My channel with JavaScript lessons for beginners.',
-      url: 'https://www.youtube.com/channel/UC4C-YzK75MlxoFUBiurTZMQ',
+      url: 'https://www.youtube.com/watch?v=0qXWbMQiA24&list=PL8TDbi_Q7TikcEjizJu5QQKPdoJ9U7wGm',
     },
     {
       title: 'JavaScript Trainer at LevelUp IT Center',
