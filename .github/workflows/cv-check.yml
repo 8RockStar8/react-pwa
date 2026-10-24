@@ -1,0 +1,23 @@
+name: CV check (temporary)
+on:
+  push:
+    branches: [cv-check]
+permissions:
+  contents: write
+jobs:
+  cv:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npm run cv
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          mkdir -p generated && cp public/*_CV.pdf public/*_CV.docx generated/
+          git add -f generated
+          git commit -m "Generated CV files for review"
+          git push origin cv-check
