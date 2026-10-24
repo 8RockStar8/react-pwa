@@ -6,6 +6,12 @@
 
 import type { CV } from './types';
 
+// SITE_URL exists only while the PDF/Word generator runs in Node (see deploy.yml).
+function siteUrl(fallback: string): string {
+  const fromEnv = typeof process !== 'undefined' ? process.env?.SITE_URL : undefined;
+  return fromEnv || fallback;
+}
+
 const cv: CV = {
   name: 'Gagik Aproyan',
   title: 'Senior React & React Native engineer',
@@ -29,7 +35,8 @@ const cv: CV = {
     github: 'https://github.com/8RockStar8',
     youtube: 'https://www.youtube.com/watch?v=0qXWbMQiA24&list=PL8TDbi_Q7TikcEjizJu5QQKPdoJ9U7wGm',
     // linkedin: 'https://www.linkedin.com/in/your-profile',
-    website: 'https://8rockstar8.github.io/react-pwa/',
+    // Set automatically from the CUSTOM_DOMAIN repo variable when the site has its own domain.
+    website: siteUrl('https://8rockstar8.github.io/react-pwa/'),
   },
 
   // Newest first. Add 1–2 `highlights` per job: what you built and the result.

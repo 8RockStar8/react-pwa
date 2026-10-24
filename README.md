@@ -62,6 +62,20 @@ scripts/         generate-cv.ts + cv/pdf.tsx, cv/docx.ts
 3. Every push to `main` builds and deploys via `.github/workflows/deploy.yml`.
    The site appears at `https://8rockstar8.github.io/react-pwa/`.
 
+### Your own domain (no server needed)
+
+GitHub Pages hosts the site for free; you only buy the domain.
+
+1. Buy a domain at any registrar (Cloudflare, Namecheap, Porkbun…).
+2. In the registrar's DNS settings add:
+   - four `A` records for `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - one `CNAME` record for `www` → `8rockstar8.github.io`
+3. In the repo: **Settings → Secrets and variables → Actions → Variables → New repository variable**:
+   name `CUSTOM_DOMAIN`, value your domain (for example `gagikaproyan.dev`).
+4. Re-run the deploy. The build switches to the domain root, writes the `CNAME` file and prints
+   the new address on the PDF and Word CV.
+5. **Settings → Pages**: confirm the custom domain and tick **Enforce HTTPS** once it's offered.
+
 ### AWS (S3 + CloudFront) — good AWS practice
 
 1. `npm run build`

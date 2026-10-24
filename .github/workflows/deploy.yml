@@ -28,9 +28,15 @@ jobs:
         with:
           node-version: 22
       - run: npm install --no-audit --no-fund
+      # With a custom domain (repo variable CUSTOM_DOMAIN, e.g. gagikaproyan.dev) the site
+      # lives at the domain root; without one it lives at /<repo-name>/ on github.io.
       - run: npm run build
         env:
-          BASE_PATH: /${{ github.event.repository.name }}/
+          BASE_PATH: ${{ vars.CUSTOM_DOMAIN && '/' || format('/{0}/', github.event.repository.name) }}
+          SITE_URL: ${{ vars.CUSTOM_DOMAIN && format('https://{0}/', vars.CUSTOM_DOMAIN) || '' }}
+      - name: Point GitHub Pages at the custom domain
+        if: ${{ vars.CUSTOM_DOMAIN != '' }}
+        run: echo "${{ vars.CUSTOM_DOMAIN }}" > dist/CNAME
       # Keep the generated CV files as a downloadable build artifact too.
       - uses: actions/upload-artifact@v4
         with:
